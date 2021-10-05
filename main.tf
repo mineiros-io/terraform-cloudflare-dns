@@ -11,18 +11,7 @@ resource "cloudflare_zone" "zone" {
 }
 
 locals {
-  records = {
-    for r in var.records :
-    (
-      try(r.key, null) == null ?
-      (
-        try(r.data, null) == null ?
-        "${r.type}/${r.name}-${md5(r.value)}" :
-        "${r.type}/${r.name}-${md5(jsonencode(r.data))}"
-      ) :
-      "${r.type}/${r.name}-${lookup(r, "key", "")}"
-    ) => r
-  }
+  records = { for r in var.records : "${r.type}/${r.name}-${try(r.key, md5(jsonencode(r.data)), md5(r.value))}" => r }
 }
 
 resource "cloudflare_record" "record" {
@@ -38,15 +27,15 @@ resource "cloudflare_record" "record" {
   allow_overwrite = try(each.value.allow_overwrite, false)
 
   dynamic "data" {
-    for_each = try(each.value.data, null) != null ? [each.value.data] : []
+    for_each = try([each.value.data], [])
     content {
-      service  = try(each.value.data.service, null)
-      proto    = try(each.value.data.proto, null)
-      name     = try(each.value.data.name, null)
-      priority = try(each.value.data.priority, null)
-      weight   = try(each.value.data.weight, null)
-      port     = try(each.value.data.port, null)
-      target   = try(each.value.data.target, null)
+      service  = try(data.value.service, null)
+      proto    = try(data.value.proto, null)
+      name     = try(data.value.name, null)
+      priority = try(data.value.priority, null)
+      weight   = try(data.value.weight, null)
+      port     = try(data.value.port, null)
+      target   = try(data.value.target, null)
     }
   }
 
