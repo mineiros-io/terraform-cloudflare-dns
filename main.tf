@@ -32,9 +32,22 @@ resource "cloudflare_record" "record" {
   name            = each.value.name
   type            = each.value.type
   value           = try(each.value.value, null)
-  data            = try(each.value.data, null)
   ttl             = try(each.value.ttl, null)
   priority        = try(each.value.priority, null)
   proxied         = try(each.value.proxied, false)
   allow_overwrite = try(each.value.allow_overwrite, false)
+
+  dynamic "data" {
+    for_each = try(each.value.data, null) != null ? [each.value.data] : []
+    content {
+      service  = try(each.value.data.service, null)
+      proto    = try(each.value.data.proto, null)
+      name     = try(each.value.data.name, null)
+      priority = try(each.value.data.priority, null)
+      weight   = try(each.value.data.weight, null)
+      port     = try(each.value.data.port, null)
+      target   = try(each.value.data.target, null)
+    }
+  }
+
 }
