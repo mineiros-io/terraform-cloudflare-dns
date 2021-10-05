@@ -11,7 +11,18 @@ resource "cloudflare_zone" "zone" {
 }
 
 locals {
-  records = { for b in var.records : "${b.type}/${b.name}" => b }
+  records = {
+    for r in var.records :
+    (
+      try(r.key, null) == null ?
+      (
+        try(r.data, null) == null ?
+        "${r.type}/${r.name}-${md5(r.value)}" :
+        "${r.type}/${r.name}-${md5(jsonencode(r.data))}"
+      ) :
+      "${r.type}/${r.name}-${lookup(r, "key", "")}"
+    ) => r
+  }
 }
 
 resource "cloudflare_record" "record" {
