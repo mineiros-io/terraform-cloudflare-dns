@@ -15,7 +15,7 @@ locals {
 }
 
 resource "cloudflare_record" "record" {
-  for_each = var.module_enabled ? local.records : tomap({})
+  for_each = var.module_enabled ? local.records : null
 
   zone_id         = cloudflare_zone.zone[0].id
   name            = each.value.name
