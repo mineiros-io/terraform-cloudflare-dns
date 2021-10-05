@@ -11,7 +11,7 @@ resource "cloudflare_zone" "zone" {
 }
 
 locals {
-  records = { for b in var.records : "${b.type}/${b.name}" => b }
+  records = { for r in var.records : "${r.type}/${r.name}-${try(r.key, md5(jsonencode(r.data)), md5(r.value))}" => r }
 }
 
 resource "cloudflare_record" "record" {
@@ -21,9 +21,22 @@ resource "cloudflare_record" "record" {
   name            = each.value.name
   type            = each.value.type
   value           = try(each.value.value, null)
-  data            = try(each.value.data, null)
   ttl             = try(each.value.ttl, null)
   priority        = try(each.value.priority, null)
   proxied         = try(each.value.proxied, false)
   allow_overwrite = try(each.value.allow_overwrite, false)
+
+  dynamic "data" {
+    for_each = try([each.value.data], [])
+    content {
+      service  = try(data.value.service, null)
+      proto    = try(data.value.proto, null)
+      name     = try(data.value.name, null)
+      priority = try(data.value.priority, null)
+      weight   = try(data.value.weight, null)
+      port     = try(data.value.port, null)
+      target   = try(data.value.target, null)
+    }
+  }
+
 }
