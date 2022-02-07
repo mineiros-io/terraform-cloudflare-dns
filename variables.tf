@@ -63,6 +63,12 @@ variable "records" {
   }
 }
 
+variable "dnssec_enabled" {
+  description = "(Optional) Whether to enable DNSSEC for the zone."
+  type        = bool
+  default     = false
+}
+
 # ------------------------------------------------------------------------------
 # MODULE CONFIGURATION PARAMETERS
 # These variables are used to configure the module.

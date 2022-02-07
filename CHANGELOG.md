@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0]
+
+### Added
+
+- DNSSEC support
+
+<!-- markdown-link-check-disable -->
+
+[unreleased]: https://github.com/mineiros-io/terraform-cloudflare-dns/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/mineiros-io/terraform-cloudflare-dns/releases/tag/v0.1.0
+
+<!-- markdown-link-check-disabled -->
+
 ## [0.0.1]
 
 ### Added

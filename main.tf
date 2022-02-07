@@ -40,3 +40,8 @@ resource "cloudflare_record" "record" {
   }
 
 }
+
+resource "cloudflare_zone_dnssec" "default" {
+  count   = var.module_enabled && var.dnssec_enabled ? 1 : 0
+  zone_id = cloudflare_zone.zone[0].id
+}
