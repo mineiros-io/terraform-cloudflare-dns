@@ -24,11 +24,13 @@ No modules.
 |------|------|
 | [cloudflare_record.record](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record) | resource |
 | [cloudflare_zone.zone](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone) | resource |
+| [cloudflare_zone_dnssec.default](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone_dnssec) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_dnssec_enabled"></a> [dnssec\_enabled](#input\_dnssec\_enabled) | (Optional) Whether to enable DNSSEC for the zone. | `bool` | `false` | no |
 | <a name="input_jump_start"></a> [jump\_start](#input\_jump\_start) | (Optional) Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false. | `bool` | `false` | no |
 | <a name="input_module_depends_on"></a> [module\_depends\_on](#input\_module\_depends\_on) | (Optional) A list of external resources the module depends\_on. Default is '[]'. | `any` | `[]` | no |
 | <a name="input_module_enabled"></a> [module\_enabled](#input\_module\_enabled) | (Optional) Whether to create resources within the module or not. Default is 'true'. | `bool` | `true` | no |
@@ -42,6 +44,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_dnssec"></a> [dnssec](#output\_dnssec) | All DNSSEC details. |
 | <a name="output_module_enabled"></a> [module\_enabled](#output\_module\_enabled) | Whether the module is enabled. |
 | <a name="output_record"></a> [record](#output\_record) | All `cloudflare_record` resource objects. |
 | <a name="output_zone"></a> [zone](#output\_zone) | The `cloudflare_zone` resource object. |

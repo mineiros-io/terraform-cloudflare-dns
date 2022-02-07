@@ -16,6 +16,11 @@ output "record" {
   value       = try(cloudflare_record.record, null)
 }
 
+output "dnssec" {
+  description = "All DNSSEC details."
+  value       = try(cloudflare_zone_dnssec.default[0], null)
+}
+
 # ------------------------------------------------------------------------------
 # OUTPUT ALL INPUT VARIABLES
 # ------------------------------------------------------------------------------
