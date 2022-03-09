@@ -51,7 +51,7 @@ Most common usage of the module:
 
 ```hcl
 module "terraform-cloudflare-dns" {
-  source = "git@github.com:mineiros-io/terraform-cloudflare-dns.git?ref=v0.0.1"
+  source = "git@github.com:mineiros-io/terraform-cloudflare-dns.git?ref=v0.1.0"
 }
 ```
 
