@@ -162,6 +162,13 @@ section {
           END
         }
 
+        attribute "comment" {
+          type        = string
+          description = <<-END
+            Comments or notes about the DNS record. This field has no effect on DNS responses.
+          END
+        }
+
         attribute "priority" {
           type        = number
           description = <<-END

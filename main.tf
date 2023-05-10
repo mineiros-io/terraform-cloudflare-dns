@@ -21,6 +21,7 @@ resource "cloudflare_record" "record" {
   name            = each.value.name
   type            = each.value.type
   value           = try(each.value.value, null)
+  comment         = try(each.value.comment, null)
   ttl             = try(each.value.ttl, null)
   priority        = try(each.value.priority, null)
   proxied         = try(each.value.proxied, false)

@@ -120,6 +120,10 @@ See [variables.tf] and [examples/] for details and use-cases.
 
     The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#getting-started-endpoints))
 
+  - [**`comment`**](#attr-records-comment): *(Optional `string`)*<a name="attr-records-comment"></a>
+
+    Comments or notes about the DNS record. This field has no effect on DNS responses.
+
   - [**`priority`**](#attr-records-priority): *(Optional `number`)*<a name="attr-records-priority"></a>
 
     The priority of the record
