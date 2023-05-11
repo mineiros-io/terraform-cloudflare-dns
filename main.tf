@@ -3,6 +3,7 @@ resource "cloudflare_zone" "zone" {
 
   depends_on = [var.module_depends_on]
 
+  account_id = var.account_id
   zone       = var.zone
   paused     = var.paused
   jump_start = var.jump_start

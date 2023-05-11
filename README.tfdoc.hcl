@@ -80,6 +80,14 @@ section {
         required    = true
         type        = string
         description = <<-END
+          Account ID to manage the zone resource in.
+        END
+      }
+
+      variable "zone" {
+        required    = true
+        type        = string
+        description = <<-END
           The DNS zone name which will be added.
         END
       }

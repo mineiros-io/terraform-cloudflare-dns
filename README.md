@@ -63,6 +63,10 @@ See [variables.tf] and [examples/] for details and use-cases.
 
 - [**`zone`**](#var-zone): *(**Required** `string`)*<a name="var-zone"></a>
 
+  Account ID to manage the zone resource in.
+
+- [**`zone`**](#var-zone): *(**Required** `string`)*<a name="var-zone"></a>
+
   The DNS zone name which will be added.
 
 - [**`paused`**](#var-paused): *(Optional `bool`)*<a name="var-paused"></a>
