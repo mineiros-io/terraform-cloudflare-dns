@@ -3,6 +3,11 @@
 # These variables must be set when using this module.
 # ---------------------------------------------------------------------------------------------------------------------
 
+variable "account_id" {
+  description = "(String) Account ID to manage the zone resource in."
+  type        = string
+}
+
 variable "zone" {
   description = "(Required) The DNS zone name which will be added."
   type        = string

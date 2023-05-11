@@ -3,6 +3,7 @@ resource "cloudflare_zone" "zone" {
 
   depends_on = [var.module_depends_on]
 
+  account_id = var.account_id
   zone       = var.zone
   paused     = var.paused
   jump_start = var.jump_start
@@ -21,6 +22,7 @@ resource "cloudflare_record" "record" {
   name            = each.value.name
   type            = each.value.type
   value           = try(each.value.value, null)
+  comment         = try(each.value.comment, null)
   ttl             = try(each.value.ttl, null)
   priority        = try(each.value.priority, null)
   proxied         = try(each.value.proxied, false)

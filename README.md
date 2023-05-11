@@ -63,6 +63,10 @@ See [variables.tf] and [examples/] for details and use-cases.
 
 - [**`zone`**](#var-zone): *(**Required** `string`)*<a name="var-zone"></a>
 
+  Account ID to manage the zone resource in.
+
+- [**`zone`**](#var-zone): *(**Required** `string`)*<a name="var-zone"></a>
+
   The DNS zone name which will be added.
 
 - [**`paused`**](#var-paused): *(Optional `bool`)*<a name="var-paused"></a>
@@ -119,6 +123,10 @@ See [variables.tf] and [examples/] for details and use-cases.
   - [**`ttl`**](#attr-records-ttl): *(Optional `number`)*<a name="attr-records-ttl"></a>
 
     The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#getting-started-endpoints))
+
+  - [**`comment`**](#attr-records-comment): *(Optional `string`)*<a name="attr-records-comment"></a>
+
+    Comments or notes about the DNS record. This field has no effect on DNS responses.
 
   - [**`priority`**](#attr-records-priority): *(Optional `number`)*<a name="attr-records-priority"></a>
 

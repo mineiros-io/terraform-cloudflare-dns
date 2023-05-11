@@ -80,6 +80,14 @@ section {
         required    = true
         type        = string
         description = <<-END
+          Account ID to manage the zone resource in.
+        END
+      }
+
+      variable "zone" {
+        required    = true
+        type        = string
+        description = <<-END
           The DNS zone name which will be added.
         END
       }
@@ -159,6 +167,13 @@ section {
           type        = number
           description = <<-END
             The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#getting-started-endpoints))
+          END
+        }
+
+        attribute "comment" {
+          type        = string
+          description = <<-END
+            Comments or notes about the DNS record. This field has no effect on DNS responses.
           END
         }
 
